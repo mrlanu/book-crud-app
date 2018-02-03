@@ -15,4 +15,6 @@ public interface BookService {
 	public List<Book> findAll();
 
 	public Book findOne(Long id);
+
+	public List<Book> findByTitle(String title);
 }

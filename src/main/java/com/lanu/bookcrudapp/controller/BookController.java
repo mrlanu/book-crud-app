@@ -42,4 +42,10 @@ public class BookController {
 	public Book findOne(Long id) {
 		return bookService.findOne(id);
 	}
+
+	@PostMapping("/search")
+	public String showSearchPage(@RequestParam("theSearchName") String theSearchName, Model model) {
+		model.addAttribute("data", bookService.findByTitle(theSearchName));
+		return "index";
+	}
 }
