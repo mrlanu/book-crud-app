@@ -37,6 +37,12 @@ public class BookController {
 		return "redirect:/";
 	}
 
+	@GetMapping("/delete")
+	public String deleteBook(Long id) {
+		bookService.deleteBook(id);
+		return "redirect:/";
+	}
+
 	@GetMapping("/findOne")
 	@ResponseBody
 	public Book findOne(Long id) {
