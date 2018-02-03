@@ -34,4 +34,9 @@ public class BookServiceImpl implements BookService {
 		return bookDao.findAll();
 	}
 
+	@Override
+	public Book findOne(Long id) {
+		return bookDao.findOne(id);
+	}
+
 }

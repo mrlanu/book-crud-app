@@ -22,8 +22,10 @@ public class BookCrudAppApplication implements CommandLineRunner {
 	public void run(String... arg0) throws Exception {
 
 		if (bookService.findAll().isEmpty()) {
-			bookService.save(new Book("The Future Is History", "How Totalitarianism Reclaimed Russia", "Masha Gessen",
-					"isbn", 2017));
+			Book book = new Book("The Future Is History", "How Totalitarianism Reclaimed Russia", "Masha Gessen",
+					"isbn", 2017);
+			book.setReadAlready(true);
+			bookService.save(book);
 			bookService.save(new Book("Behave", "The Biology of Humans at Our Best and Worst", "Robert M. Sapolsky",
 					"isbn", 2017));
 			bookService.save(new Book("I Can’t Breathe", "A Killing on Bay Street", "Matt Taibbi", "isbn", 2017));

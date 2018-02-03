@@ -13,4 +13,6 @@ public interface BookService {
 	public void save(Book book);
 
 	public List<Book> findAll();
+
+	public Book findOne(Long id);
 }

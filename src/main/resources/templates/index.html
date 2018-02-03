@@ -2,10 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<script type="text/javascript" src="webjars/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript" src="webjars/bootstrap/4.0.0-alpha.2/js.bootstrap.min.js"></script>
+<script type="text/javascript" src="webjars/jquery/2.2.3/jquery.min.js"></script>
+<script type="text/javascript" src="webjars/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" th:src="@{js/main.js}" src="../static/js/main.js"></script>
 <link rel="stylesheet" 
 	href="webjars/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"/>
+	
 <title>My books</title>
 </head>
 <body>
@@ -23,6 +25,7 @@
 						 <th>Author</th>
 						 <th>ISBN</th>
 						 <th>Print Year</th>
+						 <th>Read</th>
 						
 						</tr>
 					
@@ -35,6 +38,9 @@
 					    <td th:text="${book.author}"></td>
 					    <td th:text="${book.isbn}"></td>
 					    <td th:text="${book.printYear}"></td>
+					    <td th:text="${book.readAlready}? 'yes' : 'no'"></td> 
+					    <td><a th:href="@{findOne/(id=${book.id})}" class="btn btn-primary eBtn">Edit</a></td>
+					    
 					  
 					  </tr>
 					
@@ -56,8 +62,62 @@
 			</div>
 		
 		</div>
+		
+	<div class="myForm">
+		<form th:action="@{/save}" method="post">
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Update or Create</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			          <div class="form-group">
+			            <label for="id" class="form-control-label">ID:</label>
+			            <input type="text" class="form-control" id="id" name="id" value=""/>
+			          </div>
+			         <div class="form-group">
+			            <label for="title" class="form-control-label">Title:</label>
+			            <input type="text" class="form-control" id="title" name="title" value=""/>
+			          </div>
+			          <div class="form-group">
+			            <label for="description" class="form-control-label">Description:</label>
+			            <input type="text" class="form-control" id="description" name="description" value=""/>
+			          </div>
+			          <div class="form-group">
+			            <label for="author" class="form-control-label">Author:</label>
+			            <input type="text" class="form-control" id="author" name="author" value=""/>
+			          </div>
+			          <div class="form-group">
+			            <label for="isbn" class="form-control-label">ISBN:</label>
+			            <input type="text" class="form-control" id="isbn" name="isbn" value=""/>
+			          </div>
+			          <div class="form-group">
+			            <label for="printYear" class="form-control-label">Print Year:</label>
+			            <input type="text" class="form-control" id="printYear" name="printYear" value=""/>
+			          </div>
+			          <div class="form-group">
+			            <label for="read" class="form-control-label">Read:</label>
+			            <input type="checkbox" class="form-control" id="read" name="read" value=""/>
+			          </div>
+			          
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        <input type="submit" class="btn btn-primary" value="save" />
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		   </form>
 	
 	</div>
+	
+	</div>
+	
 
 </body>
 </html>
