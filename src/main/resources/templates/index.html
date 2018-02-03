@@ -33,7 +33,7 @@
 						 <th>Author</th>
 						 <th>ISBN</th>
 						 <th>Print Year</th>
-						 <th>Read</th>
+						 <th>Is read</th>
 						
 						</tr>
 					
@@ -46,7 +46,8 @@
 					    <td th:text="${book.author}"></td>
 					    <td th:text="${book.isbn}"></td>
 					    <td th:text="${book.printYear}"></td>
-					    <td th:text="${book.readAlready}? 'yes' : 'no'"></td> 
+					    <td th:text="${book.readAlready}? 'yes' : 'no'"></td>
+					 <!--     <td th:text="${book.readAlready}">Read</td> -->
 					    <td><a th:href="@{findOne/(id=${book.id})}" class="btn btn-primary eBtn">Edit</a></td>
 					    <td><a th:href="@{delete/(id=${book.id})}" class="btn btn-danger delBtn">Delete</a></td>
 					    
@@ -72,6 +73,7 @@
 		
 		</div>
 		
+	<!-- EDIT modal form -->	
 	<div class="myForm">
 		<form th:action="@{/save}" method="post">
 			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -109,8 +111,13 @@
 			            <input type="text" class="form-control" id="printYear" name="printYear" value=""/>
 			          </div>
 			          <div class="form-group">
-			            <label for="read" class="form-control-label">Read:</label>
-			            <input type="checkbox" class="form-control" id="read" name="read" value=""/>
+			            <label for="readAlready" class="form-control-label">Is read:</label>
+			            <br/>
+			            <label for="yes" class="form-control-label">Yes:</label>
+			        	<input type="radio" class="form-control" id="yes" name="readAlready" value="true"/>
+			        	<label for="no" class="form-control-label">No:</label>
+			       		<input type="radio" class="form-control" id="no" name="readAlready" value="false"/>
+			       
 			          </div>
 			          
 			      </div>
@@ -125,6 +132,7 @@
 	
 	</div>
 	
+	<!-- DELETE modal form -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
@@ -143,7 +151,7 @@
 		      </div>
 		    </div>
 		  </div>
-		</div>	
+	</div>	
 	
 	
 	</div>

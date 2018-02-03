@@ -17,7 +17,7 @@ public class Book {
 	private String author;
 	private String isbn;
 	private int printYear;
-	private boolean readAlready;
+	private Boolean readAlready;
 
 	public Book() {
 
@@ -81,11 +81,11 @@ public class Book {
 		this.printYear = printYear;
 	}
 
-	public boolean isReadAlready() {
+	public Boolean isReadAlready() {
 		return readAlready;
 	}
 
-	public void setReadAlready(boolean readAlready) {
+	public void setReadAlready(Boolean readAlready) {
 		this.readAlready = readAlready;
 	}
 
