@@ -2,6 +2,8 @@ package com.lanu.bookcrudapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -28,7 +30,7 @@ public class BookController {
 
 	@GetMapping("/")
 	public String showPage(Model model, @RequestParam(defaultValue = "0") int page) {
-		model.addAttribute("data", bookService.findAll(new PageRequest(page, 5)));
+		model.addAttribute("data", bookService.findAll(new PageRequest(page, 10)));
 		model.addAttribute("currentPage", page);
 		return "index";
 	}
@@ -56,8 +58,9 @@ public class BookController {
 			@RequestParam(defaultValue = "0") int page) {
 		Book theBook = new Book();
 		theBook.setTitle(theSearchName);
-		Example<Book> example = Example.of(theBook);
-		Page<Book> p = bookService.findAll(Example.of(theBook), new PageRequest(0, 5));
+		// Example<Book> example = Example.of(theBook);
+		ExampleMatcher matcher = ExampleMatcher.matching().withStringMatcher(StringMatcher.CONTAINING).withIgnoreCase();
+		Page<Book> p = bookService.findAll(Example.of(theBook, matcher), new PageRequest(0, 10));
 		int numberOfElement = p.getNumberOfElements();
 		model.addAttribute("data", p);
 
