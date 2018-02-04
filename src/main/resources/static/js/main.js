@@ -36,6 +36,7 @@ $(document).ready(function(){
 				$('.myForm #isbn').val('');
 				$('.myForm #printYear').val('');
 			//	$('.myForm #readAlready').val('');
+				document.getElementById("no").checked = true;
 				$('.myForm #exampleModal').modal();
 			
 		}

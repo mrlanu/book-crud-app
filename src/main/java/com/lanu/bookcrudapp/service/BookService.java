@@ -2,6 +2,7 @@ package com.lanu.bookcrudapp.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -16,7 +17,9 @@ public interface BookService {
 
 	public Book findOne(Long id);
 
-	public List<Book> findByTitle(String title);
-
 	public void deleteBook(Long id);
+
+	public <S extends Book> Page<S> findAll(Example<S> example, Pageable pageable);
+
+	public <S extends Book> List<S> findAll(Example<S> arg0);
 }

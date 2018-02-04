@@ -16,7 +16,7 @@ public class Book {
 	private String description;
 	private String author;
 	private String isbn;
-	private int printYear;
+	private Integer printYear;
 	private Boolean readAlready;
 
 	public Book() {
@@ -73,11 +73,11 @@ public class Book {
 		this.isbn = isbn;
 	}
 
-	public int getPrintYear() {
+	public Integer getPrintYear() {
 		return printYear;
 	}
 
-	public void setPrintYear(int printYear) {
+	public void setPrintYear(Integer printYear) {
 		this.printYear = printYear;
 	}
 

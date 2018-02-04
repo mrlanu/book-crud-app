@@ -1,6 +1,8 @@
 package com.lanu.bookcrudapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,8 +52,17 @@ public class BookController {
 	}
 
 	@PostMapping("/search")
-	public String showSearchPage(@RequestParam("theSearchName") String theSearchName, Model model) {
-		model.addAttribute("data", bookService.findByTitle(theSearchName));
-		return "index";
+	public String showSearchPage(@RequestParam(defaultValue = "null") String theSearchName, Model model,
+			@RequestParam(defaultValue = "0") int page) {
+		Book theBook = new Book();
+		theBook.setTitle(theSearchName);
+		Example<Book> example = Example.of(theBook);
+		Page<Book> p = bookService.findAll(Example.of(theBook), new PageRequest(0, 5));
+		int numberOfElement = p.getNumberOfElements();
+		model.addAttribute("data", p);
+
+		if (numberOfElement > 0)
+			return "index";
+		return "redirect:/";
 	}
 }

@@ -12,17 +12,21 @@
 </head>
 <body>
 
-	<div class="container">
-	<button class="btn btn-success nBtn">New</button>
+<div class="container">
+	<br/>
+		<div class="container">
+			<button class="btn btn-success nBtn">Insert new Book</button>
+		</div>
+	<br/>
 		<div class="card">
 			<div class="card-block">
-			
-			<!--  <form th:action="@{/search}" method="post">
-                Search book by tite: <input type="text" name="theSearchName" />
-                
-                <input type="submit" value="Search" class="add-button" />
-            </form>
-			-->
+				<div class="container">
+					 <form th:action="@{/search}" method="post">
+		                Search book by tite: <input type="text" name="theSearchName" />
+		                <input type="submit" value="Search" class="btn btn-success" />
+		            </form>
+		            <br/>
+				</div>
 			
 				<table class="table table-hover">
 					<thead>
